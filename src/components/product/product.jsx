@@ -3,18 +3,34 @@ import React from 'react';
 import StarIcon from '@material-ui/icons/Star'
 
 import { ProductContainer, ProductInfo, Title, Price, Rating, Image, Button } from './productStyles.jsx'
+import { useStateValue } from '../../redux/store.js';
 
-const Product = () => {
+const Product = ({ title, imgUrl, price, rating, id }) => {
+    // eslint-disable-next-line
+    const [{cart},dispatch] = useStateValue()
+    const addToCart = () => {
+        dispatch({
+            type: 'ADD_TO_CART',
+            item: {
+                id,
+                title,
+                imgUrl,
+                price,
+                rating
+            }
+        })
+    }
     return(
         <ProductContainer>
             <ProductInfo>
-                <Title>The lean startup</Title>
-                <Price><small>$</small><strong>19.99</strong></Price>
+                <Title>{title}</Title>
+                <Price><small>$</small><strong>{price}</strong></Price>
                 <Rating>
+                    {Array(rating).fill().map((_,i) => <StarIcon style={{color:'#ffe234'}} /> )}
                 </Rating>
             </ProductInfo>
-            <Image src='https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL.__AC_SY400_.jpg' alt='book, the lean startup' />
-            <Button>Add to Cart</Button>
+            <Image src={imgUrl} alt='book, the lean startup' />
+            <Button onClick={addToCart}>Add to Cart</Button>
         </ProductContainer> 
 
     )

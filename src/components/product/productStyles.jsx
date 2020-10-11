@@ -17,14 +17,16 @@ export const ProductContainer = styled.div`
 export const ProductInfo = styled.div`
     height: 100px;
     margin-bottom: 15px;
+    text-align: start;
 `
 
 export const Title = styled.p`
-
+    margin: 0;
 `
 
 export const Price = styled.p`
-    margin-top: 5px;
+    margin-top: 8px;
+    font-size: 1.2rem;
 `
 
 export const Rating = styled.div`

@@ -3,7 +3,7 @@ import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
 
 export const GlobalContainer = styled.div`
-    height: 60px;
+    height: 100px;
     display: flex;
     align-items: center;
     background-color: #131921;
@@ -41,7 +41,7 @@ export const NavContainer = styled.div`
 export const NavItem = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 0 10px;
+    margin: 0 16px;
     color: white;
 `
 
