@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { auth } from '../../firebase/firebase'
 import { getCartItemCount } from '../../redux/cartUtils'
 import { useStateValue } from '../../redux/store'
 
@@ -11,7 +12,11 @@ const Header = () => {
     const [search, setSearch] = useState('')
     // eslint-disable-next-line
     const [{cart, user}, dispatch] = useStateValue();
-
+    const handleAuth = () => {
+        if(user){
+            auth.signOut()
+        }
+    }
     return(
         <GlobalContainer>
             <Link to='/'>
@@ -22,10 +27,12 @@ const Header = () => {
                 <SearchIco />
             </Search>
             <NavContainer>
-                <NavItem>
-                    <Subline>Hello</Subline>
-                    <MainLine>Sign In</MainLine>
-                </NavItem>
+                <Link to={!user && '/signIn'} style={{textDecoration: 'none'}}>
+                    <NavItem onClick={handleAuth}>
+                        <Subline>Hello{user ? ', Guest!' : ''}</Subline>
+                        <MainLine>{user ? 'Sign Out' : 'Sign In'}</MainLine>
+                    </NavItem>
+                </Link>
                 <NavItem>
                     <Subline>Returns</Subline>
                     <MainLine>& Orders</MainLine>

@@ -18,6 +18,11 @@ const reducer = (state, action) => {
                 ...state,
                 cart: RemoveItemFromCart(state.cart, action.item)
             }
+        case 'SET_USER':
+            return {
+                ...state,
+                user: action.user
+            }
         default: 
             return state
     }

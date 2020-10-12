@@ -26,7 +26,7 @@ function Checkout() {
             <CheckoutItemsContainer>
                 <Ad src='https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB423492668_.jpg' />
                 <div>
-                    <h3>Hello, {user ? user.name : 'Guest'}</h3>
+                    <h3>Hello, {user ? user.email : 'Guest'}</h3>
                     <CheckoutTitle>Your shopping Cart</CheckoutTitle>
                 </div>
                 <div>
