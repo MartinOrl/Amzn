@@ -33,14 +33,12 @@ const Header = () => {
                         <MainLine>{user ? 'Sign Out' : 'Sign In'}</MainLine>
                     </NavItem>
                 </Link>
-                <NavItem>
-                    <Subline>Returns</Subline>
-                    <MainLine>& Orders</MainLine>
-                </NavItem>
-                <NavItem>
-                    <Subline>Your</Subline>
-                    <MainLine>Prime</MainLine>
-                </NavItem>
+                <Link to='/myOrders' style={{textDecoration: 'none'}}>
+                    <NavItem>
+                        <Subline>Returns</Subline>
+                        <MainLine>& Orders</MainLine>
+                    </NavItem>
+                </Link>
                 <Link to='/checkout' style={{margin: 'auto 8px', textDecoration:'none'}}>
                     <CartContainer>
                         <CartIcon />

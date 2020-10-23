@@ -36,6 +36,7 @@ export const createUserProfileDocument = async (userAuth, additonalData) =>{
         await userRef.set({
           email,
           createdAt,
+          orders: [],
           ...additonalData
         })
       }
@@ -46,5 +47,19 @@ export const createUserProfileDocument = async (userAuth, additonalData) =>{
     return userRef
   }
 
+
+export const AddItemsToDatabase = (user, cart) => {
+  var userOrdersRef = db.collection('users').doc(`${user.id}`)
+  cart.map(order =>{
+    order = {
+      ...order,
+      timestamp: new Date()
+    }
+    userOrdersRef.update({
+      orders: firebase.firestore.FieldValue.arrayUnion(order)
+    })
+    return ''
+  })
+}
 
 export const auth = firebase.auth()

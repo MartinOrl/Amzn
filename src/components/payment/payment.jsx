@@ -48,7 +48,6 @@ const Payment = () => {
                         <StripeCheckoutButton price={cartTotal} />
                     </div>
                 </PaymentOption>
-
             </Container>
         </PaymentContainer>
     )

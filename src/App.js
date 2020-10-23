@@ -9,9 +9,11 @@ import Header from './components/header/header.jsx'
 import Home from './components/home/home';
 import Checkout from './components/checkout/checkout.jsx';
 import SignIn from './components/signin/signin'
-import { useStateValue } from './redux/store';
 import Payment from './components/payment/payment';
+import Orders from './components/orders/orders'
+
 import { createUserProfileDocument } from './firebase/firebase';
+import { useStateValue } from './redux/store';
 
 function App() {
   // eslint-disable-next-line
@@ -55,6 +57,10 @@ function App() {
         <Route exact path='/payment' >
           <Header />
           <Payment />
+        </Route>
+        <Route exact path='/myOrders'>
+          <Header />
+          <Orders />
         </Route>
       </Switch>
     </div>
