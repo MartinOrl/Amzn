@@ -29,7 +29,7 @@ const Header = () => {
             <NavContainer>
                 <Link to={!user && '/signIn'} style={{textDecoration: 'none'}}>
                     <NavItem onClick={handleAuth}>
-                        <Subline>Hello{user ? ', Guest!' : ''}</Subline>
+                        <Subline>{user ? 'Welcome Back!' : 'Hello Guest'}</Subline>
                         <MainLine>{user ? 'Sign Out' : 'Sign In'}</MainLine>
                     </NavItem>
                 </Link>

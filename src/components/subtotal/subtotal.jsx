@@ -6,8 +6,10 @@ import { SubtotalContainer, SubtotalGift, Button } from './subtotalStyles.jsx'
 
 import { getCartItemCount, getCartTotal } from '../../redux/cartUtils'
 import { useStateValue } from '../../redux/store.js';
+import { useHistory } from 'react-router-dom';
 
 const Subtotal = () => {
+    const history = useHistory();
     // eslint-disable-next-line
     const [{cart}, dispatch] = useStateValue()
     let count = getCartItemCount(cart)
@@ -30,13 +32,9 @@ const Subtotal = () => {
                 value={total}
                 displayType={'text'}
                 thousandSeparator={true}
-                prefix={'$'}
-
-            
-            
-            
+                prefix={'$'}        
             />
-            <Button>Proceed to Checkout</Button>
+            <Button onClick={() => history.push('/payment')}>Proceed to Checkout</Button>
         </SubtotalContainer>
     )
 }

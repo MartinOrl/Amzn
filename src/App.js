@@ -10,43 +10,56 @@ import Home from './components/home/home';
 import Checkout from './components/checkout/checkout.jsx';
 import SignIn from './components/signin/signin'
 import { useStateValue } from './redux/store';
+import Payment from './components/payment/payment';
+import { createUserProfileDocument } from './firebase/firebase';
 
 function App() {
+  // eslint-disable-next-line
   const [{user}, dispatch] = useStateValue()
 
   useEffect(() => {
     console.log("Test")
-    auth.onAuthStateChanged(userAuth => {
+    auth.onAuthStateChanged(async userAuth => {
       if(userAuth){
-        dispatch({
-          type: 'SET_USER',
-          user: userAuth
+        const userRef = await createUserProfileDocument(userAuth)
+        userRef.onSnapshot(snapShot => {
+          dispatch({
+            type: 'SET_USER',
+            user: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          })
         })
       }
-      else{
-        dispatch({
-          type: 'SET_USER',
-          user: null
-        })
-      }
+      dispatch({
+        type: 'SET_USER',
+        user: userAuth
+      })
     })
-  }, [user, dispatch])
+  // eslint-disable-next-line
+  }, [])
 
   return (
     <div>
       <Switch>
-        <Route exact path='/' render={Home}>
+        <Route exact path='/'>
           <Header />
           <Home />
         </Route>
-        <Route exact path='/checkout' render={() => <Checkout />}>
+        <Route exact path='/checkout'>
           <Header />
           <Checkout />
         </Route>
         <Route exact path='/signIn' component={SignIn} />
+        <Route exact path='/payment' >
+          <Header />
+          <Payment />
+        </Route>
       </Switch>
     </div>
-  );
+  )
 }
 
 export default App;
+

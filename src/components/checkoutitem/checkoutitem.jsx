@@ -4,9 +4,12 @@ import StarIcon from '@material-ui/icons/Star'
 import StarOutline from '@material-ui/icons/StarBorder'
 
 import { ItemContainer, ItemInfo, Image, Title, Price, Rating, Button, QuantityOptions, Left, Right } from './checkoutitemStyles.jsx'
+import { useStateValue } from '../../redux/store.js';
 
-const Checkoutitem = ({item, addItem, removeItem}) => {
+const Checkoutitem = ({item}) => {
     const { title, price, rating, imgUrl, quantity } = item;
+    // eslint-disable-next-line 
+    const [{cart}, dispatch] = useStateValue()
 
     let empty = [];
     let filled = [];
@@ -21,6 +24,19 @@ const Checkoutitem = ({item, addItem, removeItem}) => {
         }
     }
     getRating()
+
+    const addItem = (item) => {
+        dispatch({
+            type: 'ADD_TO_CART',
+            item
+        })
+    }
+    const removeItem = (item) => {
+        dispatch({
+            type: 'REMOVE_FROM_CART',
+            item
+        })
+    }
     
 
     return(
