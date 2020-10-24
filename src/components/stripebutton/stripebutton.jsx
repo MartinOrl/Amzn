@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import StripeCheckout from 'react-stripe-checkout'
 
+
 import Loader from 'react-loader-spinner'
 
 import { useHistory } from 'react-router-dom'
@@ -16,7 +17,7 @@ const StripeButton = ({price, forStripe, onToken, email}) => {
             name='Amazon Clone'
             billingAddress
             shippingAddress
-            image='https://svgshare.com/i/CUz.svg'
+            image='https://i.pinimg.com/originals/18/e1/80/18e180218bdac1685b79197c9023259b.png'
             description={`Your total is ${price}`}
             amount={forStripe}
             panelLabel='Pay Now'
@@ -61,7 +62,7 @@ const StripeCheckoutButton = ({price}) => {
     return(
         <div>
             {
-                status === 'default' ? <StripeButton price={price} forStripe={priceForStripe} onToken={onToken} email={user.email} /> : <Spinner status={status} />
+                user && status === 'default' ? <StripeButton price={price} forStripe={priceForStripe} onToken={onToken} email={user.email} /> : <Spinner status={status} />
             }
         </div>
     )

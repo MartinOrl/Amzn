@@ -3,6 +3,8 @@ import React from 'react';
 import { useStateValue } from '../../redux/store'
 import { getCartItemCount, getCartTotal } from '../../redux/cartUtils'
 
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
 import CheckoutItem from '../checkoutitem/checkoutitem'
 
 import { PaymentContainer, Container, DeliveryAddress, Items, PaymentOption, Title } from './paymentStyles.jsx'
@@ -18,7 +20,7 @@ const Payment = () => {
         <PaymentContainer>
             <Container>
                 <h1>
-                    Checkout (<Link to='/checkout'>{itemsInCart} Item{itemsInCart === 1 ? '' : 's'}</Link>)
+                    <ArrowBackIcon />  Checkout (<Link to='/checkout'>{itemsInCart} Item{itemsInCart === 1 ? '' : 's'}</Link>)
                 </h1>
                 <DeliveryAddress>
                     <div style={{flex:'0.2'}}>

@@ -32,10 +32,15 @@ const OrderItem = ({item}) => {
                 }
                 <Price>${price}</Price>
             </ItemInfo>
-            <div style={{display: 'flex', alignItems:'center'}}>
-                <Quantity>Quantity: {quantity}</Quantity>
-                <Timestamp>Order Date:     {createdAt.toDateString()}</Timestamp>
-                <p>Status: Delivered</p>
+            <div style={{display: 'flex', alignItems:'flex-start', flexDirection: 'column', justifyContent:'center', marginRight:'16px'}}>
+                <Quantity>Quantity:</Quantity>
+                <Timestamp>Order Date:</Timestamp>
+                <p>Status:</p>
+            </div>
+            <div style={{display: 'flex', alignItems:'flex-start', flexDirection: 'column', justifyContent:'center'}}>
+                <Quantity>{quantity}</Quantity>
+                <Timestamp>{createdAt.toLocaleString()}</Timestamp>
+                <p>Delivered</p>
             </div>
             
 
@@ -59,7 +64,7 @@ const Orders = () => {
             .then(doc => {
                 let data = doc.data()
                 if(data){
-                    setOrders([...data.orders])
+                    setOrders([...data.orders].reverse())
                 }
             })
         }

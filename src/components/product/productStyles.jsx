@@ -9,7 +9,6 @@ export const ProductContainer = styled.div`
     justify-content: flex-end;
     margin: 10px;
     padding: 20px;
-    width: 100%;
     max-height: 400px;
     min-width: 100px;
 `
@@ -46,4 +45,5 @@ export const Button = styled.button`
     margin-top: 10px;
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
+    padding: 8px 16px;
 `

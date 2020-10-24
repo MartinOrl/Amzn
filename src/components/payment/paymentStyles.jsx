@@ -37,6 +37,7 @@ export const Title = styled.h3`
 
 export const PaymentOption = styled.div`
     ${SectionStyle};
+    align-items: center;
     div, ${DeliveryAddress}, div div{
         flex: 0.8;
     }

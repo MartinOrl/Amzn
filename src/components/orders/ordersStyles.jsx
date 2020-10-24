@@ -31,5 +31,4 @@ export const Quantity = styled.p`
 `
 
 export const Timestamp = styled.p`
-    margin: 0 48px;
 `

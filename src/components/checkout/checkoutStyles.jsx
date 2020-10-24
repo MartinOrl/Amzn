@@ -5,6 +5,9 @@ export const CheckoutContainer = styled.div`
     padding: 20px;
     background: white;
     height: max-content;
+    @media screen and (max-width: 870px){
+        flex-direction: column;
+    }
 `
 
 export const CheckoutItemsContainer = styled.div``
